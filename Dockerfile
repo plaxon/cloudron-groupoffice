@@ -67,4 +67,5 @@ RUN echo "zend_extension = /usr/local/ioncube/ioncube_loader_lin_7.3.so" >> /etc
 # COPY index.php start.sh /app/code/
 RUN chown -R www-data.www-data /app/code
 
+ADD ./start.sh /app/code/start.sh
 CMD [ "/app/code/start.sh" ]
