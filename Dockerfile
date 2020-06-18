@@ -44,7 +44,6 @@ RUN a2enmod proxy_fcgi setenvif
 RUN a2enconf php7.3-fpm
 
 ADD ./config.php.tpl /app/code/config.php.tpl
-RUN ln -sf /etc/groupoffice/config.php.tpl /app/code/config.php.tpl
 
 #Download package from sourceforge
 # ADD https://ayera.dl.sourceforge.net/project/group-office/6.4/$PACKAGE.tar.gz /tmp/
