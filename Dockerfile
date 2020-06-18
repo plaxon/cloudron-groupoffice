@@ -58,7 +58,7 @@ ADD https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.ta
 
 RUN tar xvzfC /tmp/ioncube_loaders_lin_x86-64.tar.gz /tmp/ \
     && rm /tmp/ioncube_loaders_lin_x86-64.tar.gz \
-    && mkdir -p /usr/local/ioncube \
+    && mkdir -p /app/code/ioncube \
     && cp /tmp/ioncube/ioncube_loader_* /app/code/ioncube \
     && rm -rf /tmp/ioncube
 
