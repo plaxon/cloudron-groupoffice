@@ -43,7 +43,8 @@ RUN pecl install apcu
 RUN a2enmod proxy_fcgi setenvif
 RUN a2enconf php7.3-fpm
 
-ADD ./config.php.tpl /etc/groupoffice/config.php.tpl
+ADD ./config.php.tpl /app/code/config.php.tpl
+ln -sf /etc/groupoffice/config.php.tpl /app/code/config.php.tpl
 
 #Download package from sourceforge
 # ADD https://ayera.dl.sourceforge.net/project/group-office/6.4/$PACKAGE.tar.gz /tmp/
@@ -58,10 +59,10 @@ ADD https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.ta
 RUN tar xvzfC /tmp/ioncube_loaders_lin_x86-64.tar.gz /tmp/ \
     && rm /tmp/ioncube_loaders_lin_x86-64.tar.gz \
     && mkdir -p /usr/local/ioncube \
-    && cp /tmp/ioncube/ioncube_loader_* /usr/local/ioncube \
+    && cp /tmp/ioncube/ioncube_loader_* /app/code/ioncube \
     && rm -rf /tmp/ioncube
 
-RUN echo "zend_extension = /usr/local/ioncube/ioncube_loader_lin_7.3.so" >> /etc/php/7.3/apache2/conf.d/00_ioncube.ini
+RUN echo "zend_extension = /app/code/ioncube/ioncube_loader_lin_7.3.so" >> /etc/php/7.3/apache2/conf.d/00_ioncube.ini
 
 
 # COPY index.php start.sh /app/code/
